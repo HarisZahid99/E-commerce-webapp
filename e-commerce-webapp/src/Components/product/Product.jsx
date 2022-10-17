@@ -1,27 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Shoes from "../../Shoes.jpg";
+import Laptop from "../../Laptop.jpg";
 class Product extends Component {
-    state = { product:this.props.product } 
-    render() { 
-        return (
-            <div>
+    state = { product: this.props.product };
+    dict = {
+        "Shoes": Shoes,
+        "Laptop": Laptop
+    };
 
-            
-            <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-                        <Card.Title>{ this.state.product.item}</Card.Title>
-                        <Card.Text>
-                            { this.state.product.price}
-        </Card.Text>
-        <Button variant="primary">View Item</Button>
-      </Card.Body>
-                </Card>
-                </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={this.dict[this.state.product.item]} />
+          <Card.Body>
+            <Card.Title>{this.state.product.item}</Card.Title>
+                    <Card.Text>{this.state.product.price}</Card.Text>
+            <Button variant="primary">View Item</Button>
+          </Card.Body>
+        </Card>
+      </div>
+    );
+  }
 }
- 
+
 export default Product;

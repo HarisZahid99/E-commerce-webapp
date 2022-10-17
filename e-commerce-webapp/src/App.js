@@ -8,7 +8,7 @@ import SellerProfile from './Components/SellerProfile';
 
 function App() {
   return (
-    <SellerProfile/>
+    <BuyerProfile/>
   );
 }
 

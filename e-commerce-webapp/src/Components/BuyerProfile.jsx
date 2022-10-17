@@ -4,6 +4,7 @@ import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
 import Corgi from "../Corgi.webp";
 import Product from "./product/Product";
+import Cat from "../Kitty";
 
 class BuyerProfile extends Component {
   Name = React.createRef();
@@ -27,7 +28,8 @@ class BuyerProfile extends Component {
       { id: 4, item: "Laptop", price: "$300" },
       { id: 5, item: "Laptop", price: "$300" },
     ],
-    emailOpt: "no"
+    emailOpt: "no",
+    userType:"Seller"
   };
 
   EditPage = () => {
@@ -67,7 +69,7 @@ class BuyerProfile extends Component {
             </button>
           </div>
           <div className="form-group">
-            <label htmlFor="Name">Name</label>
+            <label htmlFor="Name">{this.state.userType === "Buyer" ? "Name" : "Store Name"}</label>
             <input
               ref={this.Name}
               id="Name"
@@ -184,7 +186,7 @@ class BuyerProfile extends Component {
           <img src={StoreLogo} className="App-logo m-2" alt="logo" />
           <button style={{ float: "right" }} onClick={this.HomePage}>
             <img
-              src={Corgi}
+              src={this.state.userType==="Buyer"? Corgi:Cat}
               style={{ width: 50, height: 50, borderRadius: 50 / 2 }}
               className="App-logo m-2 row"
               alt="logo"
@@ -193,7 +195,7 @@ class BuyerProfile extends Component {
           <div className="row">
             <div className="col">
               <img
-                src={Corgi}
+                src={this.state.userType==="Buyer"? Corgi:Cat}
                 style={{ width: 100, height: 100, borderRadius: 100 / 2 }}
                 className="App-logo m-2 row"
                 alt="logo"
@@ -202,7 +204,7 @@ class BuyerProfile extends Component {
             <label htmlFor="Name" style={{ fontWeight: "bold" }}>
               {this.state.user.name}
             </label>
-            <label htmlFor="User">Buyer</label>
+            <label htmlFor="User">{ this.state.userType==="Buyer"? "Buyer":"Seller"}</label>
           </div>
           <div className="productsContainer">{this.renderButtons()}</div>
 
@@ -234,7 +236,7 @@ class BuyerProfile extends Component {
           
 
           <label htmlFor="Name" style={{ fontWeight: "bold" }}>
-            Order History
+            {this.state.userType==="Buyer"? "Order History":"Inventory Management"}
           </label>
           <div className="row">
             {this.state.products.map((product) => (
