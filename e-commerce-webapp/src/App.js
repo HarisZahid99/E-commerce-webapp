@@ -1,14 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-import StoreLogo from './StoreLogo';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import BuyerProfile from './Components/BuyerProfile';
-import SellerProfile from './Components/SellerProfile';
 
 function App() {
   return (
-    <BuyerProfile/>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
