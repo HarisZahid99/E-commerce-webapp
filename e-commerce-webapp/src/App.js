@@ -10,7 +10,7 @@ import SellerAccountCreation from './Components/SellerAccountCreation'
 
 function App() {
   return (
-    <SellerAccountCreation/>
+    <BuyerAccountCreation/>
   );
 }
 
