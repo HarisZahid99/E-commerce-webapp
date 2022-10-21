@@ -29,7 +29,7 @@ class BuyerProfile extends Component {
       { id: 5, item: "Laptop", price: "$300" },
     ],
     emailOpt: "no",
-    userType:"Seller"
+    userType:"Buyer"
   };
 
   EditPage = () => {
