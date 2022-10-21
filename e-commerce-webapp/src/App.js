@@ -5,10 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import BuyerProfile from './Components/BuyerProfile';
 import SellerProfile from './Components/SellerProfile';
+import BuyerAccountCreation from './Components/BuyerAccountCreation'
 
 function App() {
   return (
-    <BuyerProfile/>
+    <BuyerAccountCreation/>
   );
 }
 
