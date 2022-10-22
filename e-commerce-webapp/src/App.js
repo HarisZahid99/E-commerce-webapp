@@ -8,13 +8,17 @@ import BuyerProfile from './Components/BuyerProfile';
 import SellerProfile from './Components/SellerProfile';
 import BuyerAccountCreation from './Components/BuyerAccountCreation'
 import SellerAccountCreation from './Components/SellerAccountCreation'
+import HomepageLogin from './Components/HomepageLogin'
+
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
+          <Route index element={<HomepageLogin />} />
           <Route path="/buyerprofile" element={<BuyerProfile />} />
           <Route path="/sellerprofile" element={<SellerProfile />} />
+          <Route path="/buyerprofilecreation" element={<BuyerAccountCreation />} />
     </Routes>
   </BrowserRouter>
   );
