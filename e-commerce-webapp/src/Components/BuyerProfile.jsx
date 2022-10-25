@@ -192,6 +192,7 @@ class BuyerProfile extends Component {
               alt="logo"
             />
           </button>
+          
           <div className="row">
             <div className="col">
               <img
