@@ -11,16 +11,12 @@ import SellerAccountCreation from './Components/SellerAccountCreation'
 
 function App() {
   return (
-<<<<<<< HEAD
-    <SellerAccountCreation/>
-=======
     <BrowserRouter>
     <Routes>
           <Route path="/buyerprofile" element={<BuyerProfile />} />
           <Route path="/sellerprofile" element={<SellerProfile />} />
     </Routes>
   </BrowserRouter>
->>>>>>> f39986a0897079ec80e9e2a48d94a364071751c8
   );
     
 }
