@@ -15,10 +15,10 @@ class BuyerProfile extends Component {
   state = {
     isToggled: true,
     user: {
-      email: "fraud@gmail.com",
+      email: "tmu@gmail.com",
       name: "Ransika",
-      phone: "911",
-      address: "Joe Mama Dr.",
+      phone: "416",
+      address: "3345 Road",
       ads: "yes",
     },
     products: [

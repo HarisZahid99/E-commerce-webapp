@@ -14,10 +14,10 @@ class SellerProfile extends Component {
   state = {
     isToggled: true,
     user: {
-      email: "fraud@gmail.com",
+      email: "cps714@gmail.com",
       name: "Ransika",
       phone: "911",
-      address: "Joe Mama Dr.",
+      address: "123 Street",
       ads: "yes",
     },
     products: [
