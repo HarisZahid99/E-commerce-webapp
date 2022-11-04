@@ -19,7 +19,8 @@ class Product extends Component {
           <Card.Body>
             <Card.Title>{this.state.product.item}</Card.Title>
                     <Card.Text>{this.state.product.price}</Card.Text>
-            <Button variant="primary">View Item</Button>
+                    <Card.Text>Quantily 1</Card.Text>
+                    <Card.Text>{this.state.product.discription}</Card.Text>
           </Card.Body>
         </Card>
       </div>

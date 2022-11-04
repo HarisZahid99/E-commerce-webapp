@@ -8,6 +8,7 @@ import BuyerProfile from './Components/BuyerProfile';
 import SellerProfile from './Components/SellerProfile';
 import BuyerAccountCreation from './Components/BuyerAccountCreation'
 import SellerAccountCreation from './Components/SellerAccountCreation'
+import SellerStorePage from './Components/SellerStorePage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Routes>
           <Route path="/buyerprofile" element={<BuyerProfile />} />
           <Route path="/sellerprofile" element={<SellerProfile />} />
+          <Route path="/sellerstorepage" element={<SellerStorePage />} />
     </Routes>
   </BrowserRouter>
   );
