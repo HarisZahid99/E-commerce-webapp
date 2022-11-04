@@ -14,11 +14,19 @@ class Product extends Component {
   render() {
     return (
       <div>
-        <Card style={{ width: "18rem" }}>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <Card style={{ width: "12rem" }}>
                 <Card.Img variant="top" src={this.dict[this.state.product.item]} />
           <Card.Body>
             <Card.Title>{this.state.product.item}</Card.Title>
                     <Card.Text>{this.state.product.price}</Card.Text>
+                    <Card.Text>Quantily 1</Card.Text>
+                    <Card.Text>{this.state.product.discription}</Card.Text>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
             <Button variant="primary">View Item</Button>
           </Card.Body>
         </Card>
