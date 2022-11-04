@@ -20,6 +20,8 @@ class Product extends Component {
           <Card.Body>
             <Card.Title>{this.state.product.item}</Card.Title>
                     <Card.Text>{this.state.product.price}</Card.Text>
+                    <Card.Text>Quantily 1</Card.Text>
+                    <Card.Text>{this.state.product.discription}</Card.Text>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
