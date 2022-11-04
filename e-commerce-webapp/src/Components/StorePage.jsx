@@ -85,8 +85,8 @@ class StorePage extends Component{
                     <div id="categories">
                         <h5>Price</h5>
                         <div id="price-inputs">
-                            <input type='text' name='currency' class='price-input border border-dark' placeholder="$ Max"/>
-                            <input type='text' name="currency" class='price-input border border-dark' placeholder="$ Min"/>
+                            <input type='text' name='currency' class='price-input border border-dark' placeholder="$ Max" style={{marginRight: '4px'}}/>
+                            <input type='text' name="currency" class='price-input border border-dark' placeholder="$ Min" style={{marginRight: '4px'}}/>
                             <button type="button" class= 'btn btn-light border border-dark ml-4'>Go</button>
                         </div>
                         
