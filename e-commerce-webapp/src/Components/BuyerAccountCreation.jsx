@@ -45,6 +45,10 @@ class BuyerAccountCreation extends Component{
                                 <input class = "form-control text-field" id = "email" type="email" name="email"  required />
                             </div>
                             <div class = "form-group text-center p-1">
+                                <label for="password"><b>Password</b></label>
+                                <input class = "form-control text-field" id = "password" type="password" name="password"  required />
+                            </div>
+                            <div class = "form-group text-center p-1">
                                 <label for="phnNum"><b>Phone Number</b></label>
                                 <input class = "form-control text-field" id='phnNum' type="tel" name="phoneNumber" required />
                             </div>
