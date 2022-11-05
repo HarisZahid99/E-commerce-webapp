@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
-import Cat from "../Kitty";
+import Cat from "../images/Kitty";
 import Product from "./product/Product";
 
 class SellerStorePage extends Component {

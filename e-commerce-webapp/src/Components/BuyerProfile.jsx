@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "../App.css";
 import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
-import Corgi from "../Corgi.webp";
-import Product from "./product/Product";
-import Cat from "../Kitty";
+import Corgi from "../images/Corgi.webp";
+import Item from "./product/Item";
+import Cat from "../images/Kitty";
 
 class BuyerProfile extends Component {
   Name = React.createRef();
@@ -241,7 +241,7 @@ class BuyerProfile extends Component {
           <div className="row">
             {this.state.products.map((product) => (
               <div className="col-md-3">
-                <Product product={product} />
+                <Item product={product} />
               </div>
             ))}
           </div>

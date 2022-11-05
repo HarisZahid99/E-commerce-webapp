@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
-import Corgi from "../corgi-wave.png";
-import Corgiwave from "../Corgi copy.png";
+import Corgi from "../images/corgi-wave.png";
+import Corgiwave from "../images/Corgi copy.png";
+
+import { Link } from "react-router-dom";
 
 
 class SellerAccountCreation extends Component{
@@ -61,8 +63,12 @@ class SellerAccountCreation extends Component{
                                 <input class = "form-control" id = 'addy' type="text" name="address" required/>
                             </div> 
                             <div class='d-flex justify-content-center'>
-                                <button class='btn btn-primary btn-lg rounded-pill m-2 w-25' id="create-btn">Create</button>
-                                <button class='btn btn-secondary btn-lg rounded-pill m-2 w-25'>Cancel</button>
+                                <button class='btn btn-light btn-lg rounded-pill m-2 w-25' id="create-btn">
+                                    <Link to="/sellerprofile">Create</Link>
+                                </button>
+                                <button class='btn btn-light btn-lg rounded-pill m-2 w-25'>
+                                    <Link to="/">Cancel</Link>
+                                </button>
                             </div>
                         </form>
                     </div>

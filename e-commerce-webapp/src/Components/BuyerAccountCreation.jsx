@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
-import Corgi from "../corgi-wave.png";
-import Product from "./product/Product";
+import Corgi from "../images/corgi-wave.png";
+import Product from "./product/Item";
+
+import { Link } from "react-router-dom";
 
 
 class BuyerAccountCreation extends Component{
@@ -30,7 +32,7 @@ class BuyerAccountCreation extends Component{
                          <div>
                             <img src={Corgi} title="You!" class='rounded-circle border border-3 border-dark' height = '150'></img>
                         </div>
-                        <h2 class='p-2'>Create a buyer account</h2>
+                        <h2 class='p-2'>Create an account</h2>
                         <form class='w-50'>
                             <div class = "form-group text-center p-1">
                                 <label for="firstN"><b>First Name</b></label>
@@ -74,8 +76,12 @@ class BuyerAccountCreation extends Component{
                                 </div>
                             </div>
                             <div class='d-flex justify-content-center'>
-                                <button class='btn btn-primary btn-lg rounded-pill m-2 w-25' id="create-btn">Create</button>
-                                <button class='btn btn-secondary btn-lg rounded-pill m-2 w-25'>Cancel</button>
+                                <button class='btn btn-light btn-lg rounded-pill m-2 w-25' id="create-btn">
+                                    <Link to="/buyerprofile">Create</Link>
+                                </button>
+                                <button class='btn btn-light  btn-lg rounded-pill m-2 w-25'>
+                                    <Link to="/">Cancel</Link>
+                                </button>
                             </div>
                         </form>
                     </div>

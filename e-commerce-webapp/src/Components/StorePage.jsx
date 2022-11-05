@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import * as React2 from 'react';
 import "../App.css";
 import StoreLogo from "../StoreLogo";
-import SearchSymbol from "../search.svg"
+import SearchSymbol from "../images/search.svg"
 import "bootstrap/dist/css/bootstrap.css";
-import CartSymbol from "../shopping-bag-line.svg"
-import Corgi from "../corgi-wave.png";
+import CartSymbol from "../images/shopping-bag-line.svg"
+import Corgi from "../images/corgi-wave.png";
 import Product from "./product/Product";
 import Dropdown from 'react-bootstrap/Dropdown';
 

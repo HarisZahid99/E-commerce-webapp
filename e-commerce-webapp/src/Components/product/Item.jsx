@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Shoes from "../../Shoes.jpg";
-import Laptop from "../../Laptop.jpg";
-class Product extends Component {
-    state = { product: this.props.product };
+import Shoes from "../images/Shoes.jpg";
+import Laptop from "../images/Laptop.jpg";
+class Item extends Component {
+    state = { product: this.props.Item };
     dict = {
         "Shoes": Shoes,
         "Laptop": Laptop

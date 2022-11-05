@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import "../App.css";
 import StoreLogo from "../StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
-import Cat from "../Kitty";
+import Cat from "../images/Kitty";
 import Product from "./product/Product";
+
+
 
 class SellerProfile extends Component {
   Name = React.createRef();
