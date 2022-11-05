@@ -1,17 +1,27 @@
 //Import modules
-import React from "react";
+import React, {useRef} from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import StoreLogo from "../Images/logo-s1.png";
 import "../Styles/Login.scss";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-//Set nav paths 
+    const username_ref = useRef(null);
+    const password_ref = useRef(null);
+  //Set nav paths
   let navigate = useNavigate();
   //for login -> redirect to home
   const login_route = () => {
-    let path = `/home`;
-    navigate(path);
+      //TODO: ADD VAILIDATION TO CHECK IF USERNAME/PASSWORD EXISTS IF LOGIN PAGE SELECTED
+    if ((username_ref.value && password_ref.value) != undefined){
+        console.log(username_ref.current.value + "sdfs")
+        let path = `/home`;
+        navigate(path);
+    }
+    else{
+        //TODO: ADD MODAL HERE
+    }
+
   };
   //for signup -> redire to signup
   const signup_route = () => {
@@ -19,7 +29,6 @@ function Login() {
     navigate(path);
   };
 
-  //TODO: ADD VAILIDATION TO CHECK IF USERNAME/PASSWORD EXISTS IF LOGIN PAGE SELECTED
   return (
     <div>
       <div class="logo">
@@ -32,30 +41,32 @@ function Login() {
         <div class="content">
           <h1>Welcome back!</h1>
           <div class="field">
-            <div class="input-group mb-2">
+            <div class="form-group mb-2">
               <input
+                class="text-field form-control"
+                id="username"
                 type="text"
-                class="input-group-text form-control"
+                name="username"
                 placeholder="Username"
-                aria-label="username"
-                aria-describedby="basic-addon2"
+                ref={username_ref}
                 required
-              />
+              /> 
             </div>
-            <div class="input-group mb-2">
+            <div class="form-group mb-2">
               <input
-                type="text"
-                class="input-group-text form-control"
+                class="form-control text-field"
+                id="password"
+                type="password"
+                name="password"
                 placeholder="Password"
-                aria-label="password"
-                aria-describedby="basic-addon2"
+                ref={password_ref}
                 required
               />
             </div>
             <div class="btn-toolbar d-flex justify-content-center">
               <button
                 type="button"
-                class="btn btn-secondary  m-4"
+                class="btn btn-secondary m-4"
                 onClick={login_route}
               >
                 Login
