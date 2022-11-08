@@ -1,0 +1,177 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 50px;
+  width : 100px;
+
+  /* pointer-events: none; */
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+.App-header {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+  
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.form-control{
+  background-color: #D9D9D9 !important;
+}
+
+.navbar-custom{
+  color: black;
+}
+
+.navbar-custom .navbar-text {
+  color: green;
+  
+}
+
+.form-custom{
+  /*background-color: red; */
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-link{
+  font-size: large !important;
+  /* background-color: purple; */
+}
+
+.navbar{
+  width: 100% !important;
+  /* background-color: pink !important; */
+}
+
+.dollarSign {
+  border: 1px inset #ccc;
+}
+.dollarSign input {
+  border: 0;
+}
+
+.price-input{
+  width: 3em;
+  height: 100%;
+  border-radius: 0.5ch;
+}
+
+.color-btn{
+  border: 0;
+}
+
+.checked{
+  color: orange;
+}
+.stars{
+  display:flex;
+  flex-direction: column;
+}
+.star-link:link{
+  text-decoration: none;
+  color: black;
+}
+.star-link:hover{
+  text-decoration: none;
+  color: black;
+}
+.star-link:visited{
+  text-decoration: none;
+  color: black;
+}
+.star-link:active{
+  text-decoration: none;
+  color: black;
+}
+
+#price-inputs{
+  /* display: flex; */
+  /* justify-content: center; */
+  /* background-color: yellow; */
+  height: 30px;
+  /* justify-content: space-around; */
+}
+
+
+#header-content{
+  transform: translateX(10%);
+  /* background-color: blue !important; */
+  /* background-color: red; */
+  width: 85%;
+  /* left:0;
+  right:0; */
+}
+
+#header-search{
+  transform: translateX(400px);
+  width: 70%;
+}
+
+#cart-profile{
+  transform: translateX(100px);
+  display: flex;
+  justify-content: space-between;
+  /* background-color: green; */
+  width: 15%;
+}
+
+#body-content{
+  transform: translateX(10%);
+  display: flex;
+  flex-direction: row;
+  /* background-color: blue; */
+  width: 90%
+}
+#categories{
+  /* background-color: red; */
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: left;
+  margin-right: 10px;
+}
+#items{
+  /* background-color: green; */
+  width: 82%;
+}
+
+#colours-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: 15px 15px;
+  gap: 2px;
+}
+
+#dropdown-container{
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+  /* background-color: pink; */
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
