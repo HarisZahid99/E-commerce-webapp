@@ -15,7 +15,7 @@ function App() {
     <Routes>
           <Route path="/buyerprofile" element={<BuyerProfile />} />
         <Route path="/sellerprofile" element={<SellerProfile />} />
-         <Route path="/homepage" element={<HomePage />} />
+        <Route path="/homepage" element={<HomePage />} />
     </Routes>
   </BrowserRouter>
   );
