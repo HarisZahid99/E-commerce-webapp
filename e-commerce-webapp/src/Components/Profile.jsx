@@ -60,7 +60,22 @@ function Profile() {
   };
   //for cancel -> rediret to home
   const cancel_route = () => {
-    let path = `/home`;
+    let path = `/`;
+    navigate(path);
+  };
+  //for logout -> rediret to /
+  const logout_route = () => {
+    let path = `/`;
+    navigate(path);
+  };
+  //for logout -> rediret to /car
+  const cart_route = () => {
+    let path = `/cart`;
+    navigate(path);
+  };
+  //for invmgt -> rediret to /inventorymanagement
+  const invmgt_route = () => {
+    let path = `/inventorymanagement`;
     navigate(path);
   };
 
@@ -70,12 +85,32 @@ function Profile() {
         <div class="container-fluid">
           <img src={StoreLogo} title="nozama" height="60"></img>
           <form class="d-flex">
+            {state.user.type == "Buyer" && (
+              <button
+                class="btn btn-outline-secondary mx-3"
+                type="button"
+                onClick={cart_route}
+              >
+                Cart
+              </button>
+            )}
+
+            {state.user.type == "Seller" && (
+              <button
+                class="btn btn-outline-secondary mx-3"
+                type="button"
+                onClick={invmgt_route}
+              >
+                Inventory Management
+              </button>
+            )}
+
             <button
-              class="btn btn-outline-secondary"
+              class="btn btn-secondary mx-3"
               type="button"
-              onClick={cancel_route}
+              onClick={logout_route}
             >
-              Home
+              Logout
             </button>
           </form>
         </div>
