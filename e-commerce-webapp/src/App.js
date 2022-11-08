@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import StoreLogo from './StoreLogo';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import './Styles/App.scss';
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
-import BuyerProfile from './Components/BuyerProfile';
-import SellerProfile from './Components/SellerProfile';
-import BuyerAccountCreation from './Components/BuyerAccountCreation'
-import SellerAccountCreation from './Components/SellerAccountCreation'
-import StorePage from './Components/StorePage';
+import Login from './Components/Login'
+import Signup from './Components/Signup'
+import Home from './Components/Home'
+import Profile from './Components/Profile'
+
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-          <Route path="/buyerprofile" element={<BuyerProfile />} />
-          <Route path="/sellerprofile" element={<SellerProfile />} />
-          <Route path="/buyeraccountcreation" element={<BuyerAccountCreation/>} />
-          <Route path="/selleraccountcreation" element={<SellerAccountCreation/>} />
-          <Route path="/storepage" element={<StorePage/>} />
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+     
     </Routes>
   </BrowserRouter>
   );

@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Shoes from "../../Shoes.jpg";
-import Laptop from "../../Laptop.jpg";
-class Product extends Component {
-    state = { product: this.props.product };
+import Shoes from "../../Images/Shoes.jpg";
+import Laptop from "../../Images/Laptop.jpg";
+class Item extends Component {
+    state = { product: this.props.Item };
     dict = {
         "Shoes": Shoes,
         "Laptop": Laptop
@@ -20,6 +20,8 @@ class Product extends Component {
           <Card.Body>
             <Card.Title>{this.state.product.item}</Card.Title>
                     <Card.Text>{this.state.product.price}</Card.Text>
+                    <Card.Text>Quantily 1</Card.Text>
+                    <Card.Text>{this.state.product.discription}</Card.Text>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -33,4 +35,4 @@ class Product extends Component {
   }
 }
 
-export default Product;
+export default Item;
