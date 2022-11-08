@@ -4,6 +4,7 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Home from './Components/Home'
 import Profile from './Components/Profile'
+import Cart from './Components/Cart'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
      
     </Routes>
   </BrowserRouter>
