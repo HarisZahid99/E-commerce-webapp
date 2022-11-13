@@ -7,6 +7,7 @@ import Corgi from "../Images/corgi-wave.png";
 import Product from "./product/Item";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function Home() {
   //Set nav paths
@@ -55,49 +56,7 @@ function Home() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
-      <nav class="navbar">
-        <div class="container-fluid">
-          <img src={StoreLogo} title="nozama" height="60"></img>
-
-          <div class="btn-toolbar d-flex justify-content-end">
-            <div class="input-group my-4 mx-4 px-5 ">
-              <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-              />
-              <button type="button" class="btn btn-outline-dark">
-                Go
-              </button>
-            </div>
-
-            <button
-              type="button"
-              class="btn btn btn-outline-secondary my-4 mx-2"
-              onClick={cart_route}
-            >
-             Cart
-            </button>
-            <button
-              type="button"
-              class="btn btn btn-outline-secondary my-4 mx-2"
-              onClick={edit_profile_route}
-            >
-              Edit Profile
-            </button>
-
-            <button
-              type="button"
-              class="btn btn-secondary  my-4 mx-2"
-              onClick={logout_route}
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </nav>
+    <NavBar/>
       <hr></hr>
       <div id="dropdown-container">
         <Dropdown>
