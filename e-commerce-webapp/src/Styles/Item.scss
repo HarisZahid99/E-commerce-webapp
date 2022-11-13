@@ -10,7 +10,6 @@
     transform: translateY(150px);
     transform: translateX(50px);
     transform: translate(50px, 100px);
-    // background-color: red;
 }
 
 #body-content > div{
@@ -18,12 +17,10 @@
 }
 
 #item-info{
-    // background-color: yellow;
     display: flex;
     flex-direction: column;
     justify-content: center;
      align-items: center;
-    // align-content: center;
 }
 #quantity-container{
     display:flex;
@@ -34,7 +31,6 @@
 }
 
 #item-price{
-    // background: orange;
     text-align: center;
     line-height: 100px;
     font-size: 2em;
@@ -45,15 +41,9 @@
     border-width: 0.5px;
     border-color: #4D4C51;
     border-radius: 1em;
-    // background-color: pink;
 }
 
-// #add-to-cart-btn{
-//     transform: translate(50px, 100px);
-// }
-
 #footer-content{
-    //background-color: green;
     transform: translateY(100px);
     display: flex;
     justify-content: end;

@@ -46,12 +46,10 @@ function ItemPage(){
                 type="button"
                 class="btn btn btn-outline-secondary my-4 mx-2"
                 id="add-to-cart-btn"
-                //   onClick={edit_profile_route}
                 >
                 Add to cart
                 </button>
             </div>
-            {/* <select multiple={true} value={['B', 'C']}/> */}
             
         </div>
     )
