@@ -6,6 +6,8 @@ import Home from './Components/Home'
 import Profile from './Components/Profile'
 import Cart from './Components/Cart'
 import OrderHistory from './Components/OrderHistory'
+import ItemPage from './Components/ItemPage'
+
 
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/orderhistory" element={<OrderHistory />} />
-     
+          <Route path="/item" element={<ItemPage />} />   
     </Routes>
   </BrowserRouter>
   );
