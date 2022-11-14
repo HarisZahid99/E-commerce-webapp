@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/App.scss";
 import "bootstrap/dist/css/bootstrap.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function OrderHistoryCard() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
       <div class="card w-80 mx-4">
@@ -40,48 +46,29 @@ function OrderHistoryCard() {
                 <button
                   type="button"
                   class="btn btn-outline-primary float-right my-4 mx-2"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  onClick={handleShow}
                 >
                   View Details
                 </button>
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                          Modal title
-                        </h5>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div class="modal-body">...</div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Order # - Item Name</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                 Price <br></br>
+                 Quantiy <br></br>
+                 Item # <br></br>
+                Item Description <br></br>
+                Seller Name
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="primary" onClick={handleClose}>
+                    Ok
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </div>
           </div>
         </div>
