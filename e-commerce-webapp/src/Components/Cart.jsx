@@ -150,7 +150,7 @@ class Cart extends Component {
           <div className="container">
             <React.Fragment>
               <span>{this.RenderItemList()}</span>
-              <span className="position-absolute top-50 end-0">
+              <span className="position-absolute top-50 start-50">
                 <h1>Order Summary</h1>
                 <h2>Subtotal: $ {this.getSubtotal()}</h2>
                           <h2>Tax: $ {this.getTax()}</h2>
