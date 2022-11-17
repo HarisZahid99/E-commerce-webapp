@@ -5,6 +5,9 @@ import Signup from './Components/Signup'
 import Home from './Components/Home'
 import Profile from './Components/Profile'
 import Cart from './Components/Cart'
+import InventoryManagement from './Components/InventoryManagement'
+import OrderHistory from './Components/OrderHistory'
+import ItemPage from './Components/ItemPage'
 
 
 function App() {
@@ -16,7 +19,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
-     
+          <Route path="/inventorymanagement" element={<InventoryManagement />} />
+          <Route path="/orderhistory" element={<OrderHistory />} />
+          <Route path="/item" element={<ItemPage />} />   
     </Routes>
   </BrowserRouter>
   );
