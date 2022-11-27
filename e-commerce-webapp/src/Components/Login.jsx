@@ -1,27 +1,27 @@
 //Import modules
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import StoreLogo from "../Images/logo-s1.png";
 import "../Styles/Login.scss";
 import { useNavigate } from "react-router-dom";
+import { login } from "../requests.js";
 
 function Login() {
-    const username_ref = useRef(null);
-    const password_ref = useRef(null);
+  const username_ref = useRef(null);
+  const password_ref = useRef(null);
   //Set nav paths
   let navigate = useNavigate();
   //for login -> redirect to home
-  const login_route = () => {
-      //TODO: ADD VAILIDATION TO CHECK IF USERNAME/PASSWORD EXISTS IF LOGIN PAGE SELECTED
-    if ((username_ref.value && password_ref.value) != undefined){
-        console.log(username_ref.current.value + "sdfs")
-        let path = `/home`;
-        navigate(path);
-    }
-    else{
-        //TODO: ADD MODAL HERE
-    }
+  const login_route = async () => {
+    const data = await login({ username_ref }, { password_ref });
 
+    if (!data) {
+      console.log("response failed booooo");
+    } else {
+      console.log(data);
+      let path = `/home`;
+      navigate(path);
+    }
   };
   //for signup -> redire to signup
   const signup_route = () => {
@@ -50,7 +50,7 @@ function Login() {
                 placeholder="Username"
                 ref={username_ref}
                 required
-              /> 
+              />
             </div>
             <div class="form-group mb-2">
               <input
