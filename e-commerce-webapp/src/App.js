@@ -10,7 +10,6 @@ import OrderHistory from './Components/OrderHistory'
 import Item from './Components/ItemPage'
 import Checkout from './Components/Checkout';
 
-
 function App() {
   return (
     <BrowserRouter>
