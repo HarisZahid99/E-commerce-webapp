@@ -4,7 +4,7 @@ import StoreLogo from "../Images/StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
 import CartSymbol from "../Images/shopping-bag-line.svg";
 import Corgi from "../Images/corgi-wave.png";
-import Product from "./product/Item";
+import Product from "./Item";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";

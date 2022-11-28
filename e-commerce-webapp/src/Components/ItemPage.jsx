@@ -1,10 +1,10 @@
 import React from "react";
 import "../Styles/Item.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import Product from "./product/Item";
+import Product from "./Item";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import Item from "./product/Item"
+import Item from "./Item"
 import shoes from "./../Images/Shoes.jpg";
 
 function ItemPage(){

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Shoes from "../../Images/Shoes.jpg";
-import Laptop from "../../Images/Laptop.jpg";
+import Shoes from "../Images/Shoes.jpg";
+import Laptop from "../Images/Laptop.jpg";
 class Item extends Component {
     state = { product: this.props.Item };
     dict = {
