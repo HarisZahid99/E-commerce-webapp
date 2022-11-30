@@ -3,34 +3,11 @@ import "../Styles/App.scss";
 import StoreLogo from "../Images/StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
-
-let state = {
-  user: {
-    email: "tmu@gmail.com",
-    name: "John Wayne",
-    phone: "416",
-    address: "3345 Road",
-    ads: "yes",
-    type: "Seller",
-    username: "jwayne",
-    password: "2hfhfhfhfh",
-  },
-  products: [
-    { id: 1, item: "Shoes", price: "$5" },
-    { id: 2, item: "Laptop", price: "$300" },
-    { id: 3, item: "Laptop", price: "$300" },
-    { id: 4, item: "Laptop", price: "$300" },
-    { id: 5, item: "Laptop", price: "$300" },
-  ],
-  emailOpt: "no",
-  store: {
-    storeName: "Live Laugh Love",
-    storeId: 12123133,
-  },
-};
+import { get_user_info } from "../requests.js";
+import { reset } from "./reset";
 
 function handleEmails(event) {
-  this.setState({ emailOpt: event.target.value });
+  this.set({ emailOpt: event.target.value });
 }
 
 function SubmitChanges() {
@@ -39,12 +16,26 @@ function SubmitChanges() {
     name: this.Name.current.value,
     phone: this.Phone.current.value,
     address: this.Addrress.current.value,
-    ads: state.emailOpt,
   };
-  this.setState({ isToggled: true, user: updateUser });
+  this.set({ isToggled: true, user: updateUser });
 }
 
 function Profile() {
+  var user = {
+    first_name: localStorage.getItem("first_name"),
+    last_name: localStorage.getItem("last_name"),
+    email: localStorage.getItem("email"),
+    username: localStorage.getItem("username"),
+    password: localStorage.getItem("password"),
+    phone_number: localStorage.getItem("phone_number"),
+    address: localStorage.getItem("address"),
+    opt_in: localStorage.getItem("opt_in"),
+    store_name: localStorage.getItem("store_name"),
+    store_id: localStorage.getItem("store_id"),
+    type: localStorage.getItem("type")
+  };
+  
+
   const name = useRef(null);
   const email = useRef(null);
   const phoneNumber = useRef(null);
@@ -55,9 +46,7 @@ function Profile() {
   //Set nav paths
   let navigate = useNavigate();
   //for login -> redirect to home
-  const save_route = () => {
-    //TODO: HANDLE SUBMISSION AND UPDATE DB/FIELDSR
-  };
+  const save_route = () => {};
   //for cancel -> rediret to home
   const cancel_route = () => {
     let path = `/`;
@@ -65,6 +54,7 @@ function Profile() {
   };
   //for logout -> rediret to /
   const logout_route = () => {
+    reset()
     let path = `/`;
     navigate(path);
   };
@@ -85,7 +75,7 @@ function Profile() {
         <div class="container-fluid">
           <img src={StoreLogo} title="nozama" height="60"></img>
           <form class="d-flex">
-            {state.user.type == "Buyer" && (
+            {user.type == "Buyer" && (
               <button
                 class="btn btn-outline-secondary mx-3"
                 type="button"
@@ -95,7 +85,7 @@ function Profile() {
               </button>
             )}
 
-            {state.user.type == "Seller" && (
+            {user.type == "Seller" && (
               <button
                 class="btn btn-outline-secondary mx-3"
                 type="button"
@@ -124,8 +114,15 @@ function Profile() {
               width="150px"
               src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png"
             />
-            <span class="font-weight-bold">{state.user.name}</span>
-            <span class="text-black-50">{state.user.type}</span>
+            <span class="font-weight-bold">{user.first_name + " " + user.last_name}</span>
+            <span class="text-black-50">{user.type}</span>
+            {user.type == "Seller" && (
+              <div>
+                <span class="text-red-50">Store Name: {user.store_name}</span>
+                <br />
+                <span class="text-red-50">Store ID: {user.store_id}</span>
+              </div>
+            )}
             <span> </span>
           </div>
         </div>
@@ -136,11 +133,11 @@ function Profile() {
               <input
                 ref={name}
                 id="Name"
-                defaultValue={state.user.name}
+                defaultValue={user.first_name + " " + user.last_name}
                 onChange={(e) => {
-                  this.setState({ value: e.target.value });
+                  this.set({ value: e.target.value });
                 }}
-                disabled={state.isToggled}
+                disabled={user.isToggled}
                 type="text"
                 className="form-control"
               />
@@ -151,8 +148,8 @@ function Profile() {
                 ref={email}
                 id="Email"
                 type="text"
-                defaultValue={state.user.email}
-                disabled={state.isToggled}
+                defaultValue={user.email}
+                disabled={user.isToggled}
                 className="form-control"
               />
             </div>
@@ -162,8 +159,8 @@ function Profile() {
                 ref={phoneNumber}
                 id="Phone"
                 type="text"
-                defaultValue={state.user.phone}
-                disabled={state.isToggled}
+                defaultValue={user.phone_number}
+                disabled={user.isToggled}
                 className="form-control"
               />
             </div>
@@ -173,8 +170,8 @@ function Profile() {
                 ref={address}
                 id="Address"
                 type="text"
-                defaultValue={state.user.address}
-                disabled={state.isToggled}
+                defaultValue={user.address}
+                disabled={user.isToggled}
                 className="form-control"
               />
             </div>
@@ -186,8 +183,8 @@ function Profile() {
                     ref={username}
                     id="Username"
                     type="text"
-                    defaultValue={state.user.username}
-                    disabled={state.isToggled}
+                    defaultValue={user.username}
+                    disabled={user.isToggled}
                     className="form-control"
                   />
                 </div>
@@ -198,8 +195,8 @@ function Profile() {
                     ref={password}
                     id="Password"
                     type="password"
-                    defaultValue={state.user.password}
-                    disabled={state.isToggled}
+                    defaultValue={user.password}
+                    disabled={user.isToggled}
                     className="form-control"
                   />
                 </div>
@@ -209,20 +206,20 @@ function Profile() {
               <strong>Opt into Emails?:</strong>
               <label className="px-3">
                 <input
-                  disabled={state.isToggled}
+                  disabled={user.isToggled}
                   type="radio"
-                  value="yes"
-                  checked={state.emailOpt === "yes"}
+                  value="true"
+                  checked={user.opt_in === true}
                   onChange={handleEmails}
                 />
                 <span className="px-2">Yes</span>
               </label>
               <label className="px-3">
                 <input
-                  disabled={state.isToggled}
+                  disabled={user.isToggled}
                   type="radio"
-                  value="no"
-                  checked={state.emailOpt === "no"}
+                  value="false"
+                  checked={user.opt_in === false}
                   onChange={handleEmails}
                 />
                 <span className="px-2">No</span>

@@ -5,23 +5,64 @@ import StoreLogo from "../Images/logo-s1.png";
 import "../Styles/Login.scss";
 import { useNavigate } from "react-router-dom";
 import { login } from "../requests.js";
+import { reset } from "./reset";
 
 function Login() {
+
+  reset()
+
   const username_ref = useRef(null);
   const password_ref = useRef(null);
   //Set nav paths
   let navigate = useNavigate();
   //for login -> redirect to home
   const login_route = async () => {
-    const data = await login({ username_ref }, { password_ref });
+    await login({ username_ref }, { password_ref }).then((response) => {
+      let path = ``;
+      console.log(response)
+      if (response.data.length == 0) {
+        alert("Invaild credentials, please try again.");
+      } else {
+        var first_name = response.data[0].first_name;
+        var last_name = response.data[0].last_name;
+        var email = response.data[0].email;
+        var username = response.data[0].username;
+        var password = response.data[0].password;
 
-    if (!data) {
-      console.log("response failed booooo");
-    } else {
-      console.log(data);
-      let path = `/home`;
-      navigate(path);
-    }
+        var phone_number = response.data[0].phone_number;
+        var address = response.data[0].address;
+
+        var opt_in = response.data[0].opt_in;
+
+        var store_name = response.data[0].store_name;
+        var store_id = response.data[0].store_id;
+        var type = response.data[0].type;
+
+        localStorage.setItem("first_name", first_name);
+        localStorage.setItem("last_name", last_name);
+    
+
+
+        localStorage.setItem("email", email);
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+        
+        localStorage.setItem("phone_number", phone_number);
+        localStorage.setItem("address", address);
+        localStorage.setItem("opt_in", opt_in);
+
+        localStorage.setItem("store_name", store_name);
+        localStorage.setItem("store_id", store_id);
+
+        localStorage.setItem("type", type);
+        if (type.includes("Seller")) {
+          path = `/inventorymanagement`;
+        } else {
+          path = `/home`;
+        }
+        navigate(path);
+      }
+    });
   };
   //for signup -> redire to signup
   const signup_route = () => {
