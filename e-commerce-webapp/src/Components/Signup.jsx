@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
 import { add_buyer, add_seller } from "../requests";
 import { reset } from "./reset";
+import { useEffect } from "react";
 
 function Signup() {
   let navigate = useNavigate();
@@ -18,55 +19,74 @@ function Signup() {
   const store_name_ref = useRef(null);
   const store_id_ref = useRef(null);
 
+
+  const [firstName, setFirstName] = useState(null)
+  const [lastName, setLastName] = useState(null)
+  const [email, setEmail] = useState(null)
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [phoneNum, setPhoneNum] = useState(null)
+  const [address, setAddress] = useState(null)
+  const [optIn, setOptIn] = useState(null)
+  const [storeName, setStoreName] = useState(null)
+  const [storeId, setStoreId] = useState(null)
+
   const [sellerChecked, setStatus] = useState(0); // 0: no show, 1: show yes, 2: show no
 
+  useEffect(() => {
+    console.log(address)
+  }, [address])
+
   let path = ``;
-  const signup_route = async () => {
+  const signup_route = async (event) => {
+    event.preventDefault()
     console.log("Attempting to add user...")
-    var sN = store_name_ref.store_name_ref.current.value;
-    console.log(sN)
+    const isSellerChecked = sellerChecked === 1
+
 
     console.log("Determining whether to add buyer or seller")
     //If SN not null, then user is a seller
-    if (sN != null) {
-      await add_seller(
-        { first_name_ref },
-        { last_name_ref },
-        { email_ref },
-        { username_ref },
-        { password_ref },
-        { phone_number_ref },
-        { address_ref },
-        { opt_in_ref },
-        { store_name_ref },
-        { store_id_ref }
-      ).then((response) => {
-        if (response.data.length == 0) {
-          alert("An error occured, please try again.");
-        } else {
-          path = `/home`;
-        }
-      });
-    } else {
-      await add_buyer(
-        { first_name_ref },
-        { last_name_ref },
-        { email_ref },
-        { username_ref },
-        { password_ref },
-        { phone_number_ref },
-        { address_ref },
-        { opt_in_ref }
-      ).then((response) => {
-        if (response.data.length == 0) {
-          alert("An error occured, please try again.");
-        } else {
-          path = `/home`;
-        }
-      });
+    if (isSellerChecked) {
+     try {
+      await add_seller({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        username: username,
+        password: password,
+        phone_number: phoneNum,
+        address: address,
+        opt_in: optIn,
+        store_name: storeName,
+        store_id: storeId,
+        })
+        path = `/home`;
+     } catch (error) {
+      alert("An error occured, please try again.");
+     }
     }
 
-    navigate(path);
+     if (!isSellerChecked) {
+      try {
+        await add_buyer({
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          username: username,
+          password: password,
+          phone_number: phoneNum,
+          address: address,
+          opt_in: optIn,
+          store_name: storeName,
+          store_id: storeId,
+        })
+        path = `/home`;
+      } catch (error) {
+        alert("An error occured, please try again.");
+      }
+     }
+    await navigate(path);
+    alert(`${isSellerChecked ? 'Seller' : 'Buyer'} added!`);
   };
   //for cance -> redirect to /
   const cancel_route = () => {
@@ -93,6 +113,7 @@ function Signup() {
                 name="firstName"
                 placeholder="First Name"
                 ref={first_name_ref}
+                onChange={e => setFirstName(e.target.value)}
                 required
               />
             </div>
@@ -104,6 +125,7 @@ function Signup() {
                 name="lastName"
                 placeholder="Last Name"
                 ref={last_name_ref}
+                onChange={e => setLastName(e.target.value)}
                 required
               />
             </div>
@@ -115,6 +137,7 @@ function Signup() {
                 name="email"
                 placeholder="Email"
                 ref={email_ref}
+                onChange={e => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -126,6 +149,7 @@ function Signup() {
                 name="username"
                 placeholder="Username"
                 ref={username_ref}
+                onChange={e => setUsername(e.target.value)}
                 required
               />
             </div>
@@ -137,6 +161,7 @@ function Signup() {
                 name="password"
                 placeholder="Password"
                 ref={password_ref}
+                onChange={e => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -148,6 +173,7 @@ function Signup() {
                 name="phoneNumber"
                 placeholder="Phone Number"
                 ref={phone_number_ref}
+                onChange={e => setPhoneNum(e.target.value)}
                 required
               />
             </div>
@@ -158,6 +184,8 @@ function Signup() {
                 type="text"
                 name="address"
                 placeholder="Address"
+                onChange={e => setAddress(e.target.value)}
+                
                 ref={address_ref}
                 required
               />
@@ -204,6 +232,7 @@ function Signup() {
                     name="store_name"
                     placeholder="Store Name"
                     ref={store_name_ref}
+                    onChange={e => setStoreName(e.target.value)}
                     required
                   />
                 </div>
@@ -214,6 +243,7 @@ function Signup() {
                     type="text"
                     name="store_id"
                     placeholder="Store ID"
+                    onChange={e => setStoreId(e.target.value)}
                     ref={store_id_ref}
                     required
                   />
@@ -235,6 +265,7 @@ function Signup() {
                   id="opt_in"
                   value="true"
                   ref={opt_in_ref}
+                  onChange={e => setOptIn(true)}
                 />
                 <label class="form-check-label" for="inlineRadio1">
                   Yes
@@ -248,6 +279,7 @@ function Signup() {
                   id="opt_in"
                   value="false"
                   ref={opt_in_ref}
+                  onChange={e => setOptIn(false)}
                 />
                 <label class="form-check-label" for="inlineRadio2">
                   No
@@ -259,7 +291,7 @@ function Signup() {
               <button
                 class="btn btn-secondary m-4 w-25"
                 id="create-btn"
-                onClick={signup_route}
+                onClick={event => signup_route(event)}
               >
                 Sign Up
               </button>

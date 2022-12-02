@@ -45,16 +45,16 @@ async function add_seller(user) {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     data: {
-      first_name: user.first_name_ref.current.value,
-      last_name: user.first_name_ref.last_name,
-      email: user.first_name_ref.email,
-      username: user.first_name_ref.username,
-      password: user.first_name_ref.password,
-      phone_number: user.first_name_ref.phoneNumber,
-      address: user.addrss_ref.address,
-      opt_in: user.opt_in_ref.opt_in,
-      store_name: user.store_name_ref.store_name,
-      store_id: user.store_id_ref.store_id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      username: user.username,
+      password: user.password,
+      phone_number: user.phone_number,
+      address: user.address,
+      opt_in: user.opt_in,
+      store_name: user.store_name,
+      store_id: user.store_id,
     },
   })
     .then((response) => {
@@ -67,21 +67,8 @@ async function add_seller(user) {
 }
 
 //ADD BUYER
-async function add_buyer(first_name, last_name,email,username, password, phone_number, address, opt_in, store_name, store_id) {
+async function add_buyer(user) {
   console.log("Attempting to add new buyer....");
-  var fn = first_name.first_name_ref.current.value;
-  var ln = last_name.last_name_ref.current.value;
-  var e = email.username_ref.current.value;
-  var u = username.username_ref.current.value;
-  var p = password.password_ref.current.value;
-  var pn = phone_number.phone_number_ref.current.value
-  var a = address.addrss_ref.current.value;
-  var o = opt_in.opt_in_ref.current.value
-  var sN = store_name.store_name_ref.current.value;
-  var sID = store_id.store_id_ref.current.value
-
-
-
   return await axios({
     method: "post",
     url: url + "/auth/addBuyer",
@@ -89,16 +76,16 @@ async function add_buyer(first_name, last_name,email,username, password, phone_n
       "Content-Type": "application/x-www-form-urlencoded",
     },
     data: {
-      first_name: fn,
-      last_name: ln,
-      email: e,
-      username: u,
-      password: p,
-      phone_number: pn,
-      address: a,
-      opt_in: o,
-      store_name: sN,
-      store_id: sID,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      username: user.username,
+      password: user.password,
+      phone_number: user.phone_number,
+      address: user.address,
+      opt_in: user.opt_in,
+      store_name: user.store_name,
+      store_id: user.store_id,
     },
   })
     .then((response) => {
@@ -149,6 +136,25 @@ async function edit_profile_buyer(first_name, last_name,email,username, password
       return false;
     });
 }
+
+const remove_item_from_card = async (account_id, item_id) => {
+  console.log(`Attempting to remove item=[${item_id}] from the cart...`)
+  try {
+     await axios({
+      method: 'delete',
+      url: url + "/buyer/cart/remove",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: {
+        account_id,
+        item_id,
+      }
+    })
+  } catch (error) {
+    console.log("Error removing item from cart")
+  }
+} 
 
 //GET CART
 async function get_cart(c_id){
@@ -350,6 +356,5 @@ async function add_items(item_price, item_quantity, item_name, picture_url, item
 
 }
 
-
-
-export { login, add_buyer, add_seller,edit_profile_buyer, get_cart, add_cart, get_orders, add_orders, edit_profile_seller, get_items, add_items, };
+export { remove_item_from_card, login, add_buyer, add_seller,edit_profile_buyer, get_cart, add_cart, get_orders, add_orders, edit_profile_seller, get_items, add_items, };
+ 

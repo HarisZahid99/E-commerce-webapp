@@ -1,18 +1,26 @@
 import React, { useRef } from "react";
 
-import { add_orders } from "../requests";
+import { add_orders, remove_item_from_card } from "../requests";
 
-function CartCard({ props }) {
+function CartCard({ props, shouldRerender, setShouldRerender }) {
  
   const id_ref = useRef(null);
   var i_ref = { id_ref };
+  const accountId = localStorage.getItem("account_id");
+  const itemId = props.id;
+  
   const add_orders = async () => {
-    await add_orders(localStorage.getItem("account_id"), props.id).then(
+    await add_orders(accountId, itemId).then(
       (response) => {
         console.log(response);
       }
     );
   };
+
+  const removeItemFromCart = async() => {
+   await remove_item_from_card(accountId, itemId);
+   setShouldRerender(!shouldRerender)
+  }
 
 
   return (
@@ -34,10 +42,15 @@ function CartCard({ props }) {
                 <h5 class="card-subtitle mb-2 text-muted">
                   ${props.item_price}
                 </h5>
-                <div id="quantity-container">
-                  <h6 class="me-2" id="quantity-label">
-                    Quantity - 1
-                  </h6>
+                <div id="quantity-container" display="flex" class="flex-column">
+                  <h6 class="me-2" id="quantity-label"> Quantity - 1</h6>
+                  <button
+                      class="btn btn btn-outline-secondary mb-4"
+                      type="button"
+                      onClick={removeItemFromCart}
+                    >
+                    Remove
+                  </button>
                   
                 </div>
                 <div class="row">

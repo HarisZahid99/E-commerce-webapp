@@ -15,6 +15,7 @@ function Home() {
   let navigate = useNavigate();
   const [data, setData] = useState(null);
   const [dataRendered, setStatus] = useState(0); // 0: no show, 1: show yes
+  const [shouldRerender, setShouldRerender] = useState(false)
   var items = [];
   var items_length = 0;
 
@@ -29,7 +30,7 @@ function Home() {
       items_length = items.length;
       localStorage.setItem("items", data);
     });
-  }, []);
+  }, [shouldRerender]);
 
   return (
     <div>
@@ -41,7 +42,7 @@ function Home() {
       <hr></hr>
 
       <div>
-        {dataRendered == 1 && data.map((item) => <Product props={item} />)}
+        {dataRendered == 1 && data.map((item) => <Product props={item} shouldRerender={shouldRerender} setShouldRerender={setShouldRerender} />)}
       </div>
     </div>
   );
