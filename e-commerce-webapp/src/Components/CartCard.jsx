@@ -17,7 +17,9 @@ function CartCard({ props, shouldRerender, setShouldRerender }) {
     );
   };
 
-  const removeItemFromCart = async() => {
+  const removeItemFromCart = async(event) => {
+    event.preventDefault()
+   console.log('removing item', itemId)
    await remove_item_from_card(accountId, itemId);
    setShouldRerender(!shouldRerender)
   }
@@ -43,7 +45,7 @@ function CartCard({ props, shouldRerender, setShouldRerender }) {
                   ${props.item_price}
                 </h5>
                 <div id="quantity-container" display="flex" class="flex-column">
-                  <h6 class="me-2" id="quantity-label"> Quantity - 1</h6>
+                  <h6 class="me-2" id="quantity-label"> Quantity - {props.item_quantity}</h6>
                   <button
                       class="btn btn btn-outline-secondary mb-4"
                       type="button"
