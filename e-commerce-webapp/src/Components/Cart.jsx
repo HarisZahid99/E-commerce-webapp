@@ -73,6 +73,11 @@ function Cart() {
     localStorage.setItem("order_quantity", data.length);
   };
 
+  // console.log("---data", data)
+  // data.map(item => console.log(item))
+  const getQuantity = (items, itemId) => items.map(item => item.id === itemId).length;
+  
+
   return (
     <div>
       <NavBar></NavBar>
@@ -80,7 +85,15 @@ function Cart() {
       <div class="row">
         <div class="col-md-7 border-left">
           <div>
-            {dataRendered == 1 && data.map((item) => <CartCard props={item} shouldRerender={shouldRerender} setShouldRerender={setShouldRerender}/>)}
+            {dataRendered == 1 && data.map((item) => {
+              console.log('---data', data)
+
+              const quantity = getQuantity(data, item.id)
+              console.log(item.id, quantity)
+              return (
+                <CartCard props={item} shouldRerender={shouldRerender} setShouldRerender={setShouldRerender}/>
+              )
+            })}
             {dataRendered == 0 && (
               <h3>Nothing to show here! Please add an item to your cart</h3>
             )}
