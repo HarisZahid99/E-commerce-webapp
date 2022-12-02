@@ -13,6 +13,7 @@ function Cart() {
   let navigate = useNavigate();
   const [data, setData] = useState(null);
   const [dataRendered, setStatus] = useState(0); // 0: no show, 1: show yes
+  const [shouldRerender, setShouldRerender] = useState(false)
   var items = [];
   var items_length = 0;
 
@@ -34,7 +35,6 @@ function Cart() {
         console.log(state)
     }
   
-
   
   const checkDataRender = (status) => {
     setStatus(status);
@@ -46,7 +46,8 @@ function Cart() {
       setData(items);
       checkDataRender(1);
     });
-  }, []);
+  }, [shouldRerender]);
+
 
   const getSubtotal = () => {
     
@@ -79,7 +80,7 @@ function Cart() {
       <div class="row">
         <div class="col-md-7 border-left">
           <div>
-            {dataRendered == 1 && data.map((item) => <CartCard props={item} />)}
+            {dataRendered == 1 && data.map((item) => <CartCard props={item} shouldRerender={shouldRerender} setShouldRerender={setShouldRerender}/>)}
             {dataRendered == 0 && (
               <h3>Nothing to show here! Please add an item to your cart</h3>
             )}
