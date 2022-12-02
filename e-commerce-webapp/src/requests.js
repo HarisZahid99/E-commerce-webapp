@@ -150,6 +150,25 @@ async function edit_profile_buyer(first_name, last_name,email,username, password
     });
 }
 
+const remove_item_from_card = async (account_id, item_id) => {
+  console.log(`Attempting to remove item=[${item_id}] from the cart...`)
+  try {
+     await axios({
+      method: 'delete',
+      url: url + "/buyer/cart/remove",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: {
+        account_id,
+        item_id,
+      }
+    })
+  } catch (error) {
+    console.log("Error removing item from cart")
+  }
+} 
+
 //GET CART
 async function get_cart(c_id){
   
@@ -350,6 +369,5 @@ async function add_items(item_price, item_quantity, item_name, picture_url, item
 
 }
 
-
-
-export { login, add_buyer, add_seller,edit_profile_buyer, get_cart, add_cart, get_orders, add_orders, edit_profile_seller, get_items, add_items, };
+export { remove_item_from_card, login, add_buyer, add_seller,edit_profile_buyer, get_cart, add_cart, get_orders, add_orders, edit_profile_seller, get_items, add_items, };
+ 
