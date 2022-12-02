@@ -1,16 +1,20 @@
-import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import {add_cart} from '../requests'
-function Item({ props }) {
+import React, { useRef } from "react";
 
+import { add_orders } from "../requests";
+
+function CartCard({ props }) {
  
+  const id_ref = useRef(null);
+  var i_ref = { id_ref };
+  const add_orders = async () => {
+    await add_orders(localStorage.getItem("account_id"), props.id).then(
+      (response) => {
+        console.log(response);
+      }
+    );
+  };
 
-  const add_to_cart = async () =>{
-   await add_cart(localStorage.getItem("account_id"), props.id).then((response)  => {
-      console.log(response)
-    })
-    
-  }
+
   return (
     <div>
       <div class="card-columns">
@@ -22,16 +26,22 @@ function Item({ props }) {
             >
               <div class="card-body">
                 <h3 class="card-title">{props.item_name}</h3>
-                <h6 class="card-subtitle mb-2 text-muted">
+                <h6 class="card-subtitle mb-2 text-muted"
+                ref={id_ref}
+                >
                   Item ID - {props.id}
                 </h6>
                 <h5 class="card-subtitle mb-2 text-muted">
                   ${props.item_price}
                 </h5>
+                <div id="quantity-container">
+                  <h6 class="me-2" id="quantity-label">
+                    Quantity - 1
+                  </h6>
+                  
+                </div>
                 <div class="row">
                   <div class="col-md-9 border-right">
-                    
-
                     <p class="card-text">{props.item_description}</p>
                   </div>
                   <div class="col-md-3">
@@ -43,15 +53,6 @@ function Item({ props }) {
                   </div>
                 </div>
               </div>
-              <div class="btn-toolbar d-flex justify-content-end">
-                <button
-                  type="button"
-                  class="btn btn-outline-primary float-right my-4 mx-4"
-                  onClick={add_to_cart}
-                >
-                  Add to Cart
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -60,4 +61,4 @@ function Item({ props }) {
   );
 }
 
-export default Item;
+export default CartCard;

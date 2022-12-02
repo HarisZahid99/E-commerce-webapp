@@ -2,9 +2,8 @@ import React, { useRef, useState } from "react";
 import StoreLogo from "../Images/StoreLogo";
 import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
-import { add } from "../requests";
+import { add_buyer, add_seller } from "../requests";
 import { reset } from "./reset";
-
 
 function Signup() {
   let navigate = useNavigate();
@@ -23,28 +22,55 @@ function Signup() {
 
   let path = ``;
   const signup_route = async () => {
-    await add(
-      { first_name_ref },
-      { last_name_ref },
-      { email_ref },
-      { username_ref },
-      { password_ref },
-      { phone_number_ref },
-      { address_ref },
-      { opt_in_ref }
-    ).then((response) => {
-      if (response.data.length == 0) {
-        alert("An error occured, please try again.");
-      } else {
-        path = `/home`;
-      }
-    });
+    console.log("Attempting to add user...")
+    var sN = store_name_ref.store_name_ref.current.value;
+    console.log(sN)
+
+    console.log("Determining whether to add buyer or seller")
+    //If SN not null, then user is a seller
+    if (sN != null) {
+      await add_seller(
+        { first_name_ref },
+        { last_name_ref },
+        { email_ref },
+        { username_ref },
+        { password_ref },
+        { phone_number_ref },
+        { address_ref },
+        { opt_in_ref },
+        { store_name_ref },
+        { store_id_ref }
+      ).then((response) => {
+        if (response.data.length == 0) {
+          alert("An error occured, please try again.");
+        } else {
+          path = `/home`;
+        }
+      });
+    } else {
+      await add_buyer(
+        { first_name_ref },
+        { last_name_ref },
+        { email_ref },
+        { username_ref },
+        { password_ref },
+        { phone_number_ref },
+        { address_ref },
+        { opt_in_ref }
+      ).then((response) => {
+        if (response.data.length == 0) {
+          alert("An error occured, please try again.");
+        } else {
+          path = `/home`;
+        }
+      });
+    }
 
     navigate(path);
   };
   //for cance -> redirect to /
   const cancel_route = () => {
-    reset()
+    reset();
     let path = `/`;
     navigate(path);
   };
@@ -85,7 +111,7 @@ function Signup() {
               <input
                 class="form-control text-field"
                 id="email"
-                type="email"
+                type="text"
                 name="email"
                 placeholder="Email"
                 ref={email_ref}

@@ -14,6 +14,8 @@ function reset() {
   localStorage.setItem("store_id", null);
 
   localStorage.setItem("type", null);
+  localStorage.setItem("account_id", null);
+  localStorage.setItem("items", null);
 }
 
 export { reset } 

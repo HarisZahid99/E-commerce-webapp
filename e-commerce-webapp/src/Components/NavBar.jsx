@@ -19,8 +19,21 @@ function NavBar() {
     navigate(path);
   };
 
-   //for logout -> redire to login
-   const cart_route = () => {
+  const home_route = () => {
+    let path = `/home`;
+    navigate(path);
+  };
+  const invmgt_route = () => {
+    let path = `/inventorymanagement`;
+    navigate(path);
+  };
+
+  const order_history_route = () => {
+    let path = `/orderhistory`;
+    navigate(path);
+  };
+  //for logout -> redire to login
+  const cart_route = () => {
     let path = `/cart`;
     navigate(path);
   };
@@ -48,13 +61,42 @@ function NavBar() {
               </button>
             </div>
 
-            <button
-              type="button"
-              class="btn btn btn-outline-secondary my-4 mx-2"
-              onClick={cart_route}
-            >
-             Cart
-            </button>
+            {localStorage.getItem("type") == "Seller" && (
+              <button
+                class="btn btn btn-outline-secondary my-4 mx-2"
+                type="button"
+                onClick={invmgt_route}
+              >
+                Inventory Management
+              </button>
+            )}
+            {localStorage.getItem("type") == "Buyer" && (
+
+              
+              <div>
+                <button
+                  type="button"
+                  class="btn btn btn-outline-secondary my-4 mx-2"
+                  onClick={home_route}
+                >
+                  Home
+                </button>
+                <button
+                  type="button"
+                  class="btn btn btn-outline-secondary my-4 mx-2"
+                  onClick={cart_route}
+                >
+                  Cart
+                </button>
+                <button
+                  type="button"
+                  class="btn btn btn-outline-secondary my-4 mx-2"
+                  onClick={order_history_route}
+                >
+                  Order History
+                </button>
+              </div>
+            )}
             <button
               type="button"
               class="btn btn btn-outline-secondary my-4 mx-2"
@@ -73,7 +115,7 @@ function NavBar() {
           </div>
         </div>
       </nav>
-      </div>
+    </div>
   );
 }
 

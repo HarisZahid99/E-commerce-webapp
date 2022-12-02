@@ -38,11 +38,12 @@ function Login() {
         var store_id = response.data[0].store_id;
         var type = response.data[0].type;
 
+        var account_id = response.data[0].id;
+        var cart_id = response.data[0].cart_id;
+
         localStorage.setItem("first_name", first_name);
         localStorage.setItem("last_name", last_name);
-    
-
-
+  
         localStorage.setItem("email", email);
         localStorage.setItem("username", username);
         localStorage.setItem("password", password);
@@ -55,6 +56,10 @@ function Login() {
         localStorage.setItem("store_id", store_id);
 
         localStorage.setItem("type", type);
+        localStorage.setItem("account_id", account_id);
+        localStorage.setItem("cart_id", cart_id);
+        localStorage.setItem("order_price", 0.0);
+        localStorage.setItem("order_quantity", 0);
         if (type.includes("Seller")) {
           path = `/inventorymanagement`;
         } else {

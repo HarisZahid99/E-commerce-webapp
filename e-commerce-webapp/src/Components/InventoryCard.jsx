@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 import Shoes from "../Images/Shoes.jpg";
 import Laptop from "../Images/Laptop.jpg";
 
-function InventoryCard() {
+function InventoryCard({props}) {
        
     const [show, setShow] = useState(false);
 
@@ -20,22 +20,22 @@ function InventoryCard() {
                 <div class="card h-100">
                     <div className="row" style={{  paddingLeft: "40px",paddingTop: "0px" }}>
                         <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h5 class="card-subtitle mb-2 text-muted">Price</h5>
+                            <h3 class="card-title">{props.item_name}</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">${props.item_price}</h5>
                             <div class="row">
                                 <div class="col-md-9 border-right">
                                 <p class="card-text">
-                                    Quantity
+                                    Qty: {props.item_quantity}
                                 </p>
                                 <p class="card-text">
-                                    Description
+                                    {props.item_description}
                                 </p>
                                 </div>
                                 <div class="col-md-3">
                                 <img
                                     class="rounded float-right"
-                                    width="400px"
-                                    src={Shoes}
+                                    width="350px"
+                                    src={props.picture_url}
                                 />
                                 </div>
                             </div>
