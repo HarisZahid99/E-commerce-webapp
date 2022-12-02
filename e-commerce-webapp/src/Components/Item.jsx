@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import {add_cart} from '../requests'
-function Item({ props }) {
+function Item({ props, shouldRerender, setShouldRerender }) {
 
  
 
   const add_to_cart = async () =>{
    await add_cart(localStorage.getItem("account_id"), props.id).then((response)  => {
       console.log(response)
+      alert('An item was added to your cart')
     })
-    
+    setShouldRerender(!shouldRerender)
   }
   return (
     <div>
